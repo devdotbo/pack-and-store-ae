@@ -15,6 +15,10 @@ import { Card } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { cn } from "@/lib/utils"
 import { useState } from "react"
+import { AnimatedSection, StaggerContainer, StaggerItem } from "@/components/scroll/AnimatedSection"
+import { ParallaxBackground } from "@/components/scroll/ParallaxLayer"
+import { m, useScroll, useTransform } from "framer-motion"
+import { useElementVisibility } from "@/hooks/useScrollAnimation"
 
 const features = [
   {
@@ -69,19 +73,30 @@ const features = [
 
 export function FeaturesGrid() {
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null)
+  const { ref, isVisible } = useElementVisibility(0.3)
+  const { scrollY } = useScroll()
+  
+  // Background color transition based on scroll
+  const bgOpacity = useTransform(
+    scrollY,
+    [0, 500, 1000],
+    [0, 0.3, 0.5]
+  )
 
   return (
-    <section className="py-16 md:py-24 bg-muted/30 relative overflow-hidden">
-      {/* Background Pattern */}
-      <div className="absolute inset-0 opacity-5">
-        <div className="absolute inset-0" style={{
-          backgroundImage: `radial-gradient(circle at 1px 1px, currentColor 1px, transparent 1px)`,
-          backgroundSize: '40px 40px',
-        }} />
-      </div>
+    <section ref={ref} className="py-16 md:py-24 relative overflow-hidden">
+      {/* Animated Background */}
+      <m.div
+        className="absolute inset-0 bg-muted"
+        style={{ opacity: bgOpacity }}
+      />
+      
+      {/* Parallax Pattern */}
+      <ParallaxBackground pattern="dots" speed={0.2} className="opacity-5" />
 
       <div className="container relative">
-        <div className="text-center mb-12 space-y-4">
+        {/* Header with fade in */}
+        <AnimatedSection animation="fadeUpScale" className="text-center mb-12 space-y-4">
           <Badge variant="outline" className="mb-4">
             <Coffee className="w-3 h-3 mr-1" />
             The Unfiltered Features List
@@ -98,70 +113,104 @@ export function FeaturesGrid() {
           <p className="text-sm text-muted-foreground/70">
             Spoiler: It's mostly common sense, executed obsessively well
           </p>
-        </div>
+        </AnimatedSection>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {/* Features Grid with stagger animation */}
+        <StaggerContainer 
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
+          staggerDelay={0.1}
+          delayChildren={0.3}
+        >
           {features.map((feature, index) => (
-            <Card 
-              key={index}
-              className={cn(
-                "p-6 transition-all duration-300 border-muted cursor-pointer relative overflow-hidden",
-                "hover:shadow-xl hover:border-primary/30",
-                hoveredIndex === index && "scale-105"
-              )}
-              onMouseEnter={() => setHoveredIndex(index)}
-              onMouseLeave={() => setHoveredIndex(null)}
-            >
-              {/* Animated Background */}
-              <div 
-                className={cn(
-                  "absolute inset-0 transition-opacity duration-300",
-                  hoveredIndex === index ? "opacity-100" : "opacity-0"
-                )}
-                style={{
-                  background: `radial-gradient(circle at top left, hsl(var(--primary) / 5%) 0%, transparent 70%)`,
-                }}
-              />
-              
-              <div className="relative">
-                <div className="flex items-start gap-4">
-                  <div className={cn(
-                    "p-3 rounded-lg transition-all duration-300",
-                    hoveredIndex === index ? "bg-primary/10 text-primary scale-110" : cn(feature.bgColor, feature.color)
-                  )}>
-                    <feature.icon className="h-6 w-6" />
-                  </div>
-                  <div className="flex-1">
-                    <h3 className="font-semibold text-lg mb-2">{feature.title}</h3>
-                    <div className="space-y-1">
-                      <p className={cn(
-                        "text-sm transition-all duration-300",
-                        hoveredIndex === index ? "text-muted-foreground/60 line-through" : "text-muted-foreground"
-                      )}>
-                        {feature.admission}
-                      </p>
-                      <p className={cn(
-                        "text-sm font-medium transition-all duration-300",
-                        hoveredIndex === index ? "text-primary" : "text-foreground"
-                      )}>
-                        {feature.reality}
-                      </p>
+            <StaggerItem key={index} animation={index % 2 === 0 ? "slideInLeft" : "slideInRight"}>
+              <m.div
+                whileHover={{ y: -5 }}
+                transition={{ type: "spring", stiffness: 300 }}
+              >
+                <Card 
+                  className={cn(
+                    "p-6 transition-all duration-300 border-muted cursor-pointer relative overflow-hidden h-full",
+                    "hover:shadow-xl hover:border-primary/30",
+                    hoveredIndex === index && "scale-105"
+                  )}
+                  onMouseEnter={() => setHoveredIndex(index)}
+                  onMouseLeave={() => setHoveredIndex(null)}
+                >
+                  {/* Animated Background Glow */}
+                  <m.div 
+                    className="absolute inset-0"
+                    initial={{ opacity: 0 }}
+                    animate={{ 
+                      opacity: hoveredIndex === index ? 1 : 0,
+                      scale: hoveredIndex === index ? 1 : 0.8
+                    }}
+                    transition={{ duration: 0.3 }}
+                    style={{
+                      background: `radial-gradient(circle at top left, hsl(var(--primary) / 5%) 0%, transparent 70%)`,
+                    }}
+                  />
+                  
+                  <div className="relative">
+                    <div className="flex items-start gap-4">
+                      <m.div 
+                        className={cn(
+                          "p-3 rounded-lg transition-all duration-300",
+                          hoveredIndex === index ? "bg-primary/10 text-primary" : cn(feature.bgColor, feature.color)
+                        )}
+                        animate={{
+                          rotate: hoveredIndex === index ? 360 : 0,
+                          scale: hoveredIndex === index ? 1.1 : 1
+                        }}
+                        transition={{ duration: 0.5 }}
+                      >
+                        <feature.icon className="h-6 w-6" />
+                      </m.div>
+                      <div className="flex-1">
+                        <h3 className="font-semibold text-lg mb-2">{feature.title}</h3>
+                        <div className="space-y-1">
+                          <m.p 
+                            className={cn(
+                              "text-sm transition-all duration-300",
+                              hoveredIndex === index ? "text-muted-foreground/60 line-through" : "text-muted-foreground"
+                            )}
+                          >
+                            {feature.admission}
+                          </m.p>
+                          <m.p 
+                            className={cn(
+                              "text-sm font-medium transition-all duration-300",
+                              hoveredIndex === index ? "text-primary" : "text-foreground"
+                            )}
+                            animate={{
+                              x: hoveredIndex === index ? 5 : 0
+                            }}
+                          >
+                            {feature.reality}
+                          </m.p>
+                        </div>
+                      </div>
                     </div>
                   </div>
-                </div>
-              </div>
-            </Card>
+                </Card>
+              </m.div>
+            </StaggerItem>
           ))}
-        </div>
+        </StaggerContainer>
 
-        {/* Bottom CTA Section */}
-        <div className="mt-16 text-center space-y-6">
+        {/* Bottom CTA Section with scroll reveal */}
+        <AnimatedSection animation="fadeUpScale" delay={0.8} className="mt-16 text-center space-y-6">
           <div className="inline-flex items-center gap-2 text-muted-foreground">
             <Phone className="w-4 h-4" />
             <span className="text-sm">Still skeptical? Fair enough.</span>
           </div>
           
-          <div className="bg-card rounded-lg p-6 max-w-2xl mx-auto border shadow-sm">
+          <m.div 
+            className="bg-card rounded-lg p-6 max-w-2xl mx-auto border shadow-sm"
+            whileInView={{ 
+              boxShadow: "0 20px 40px -15px rgba(0, 0, 0, 0.1)"
+            }}
+            transition={{ duration: 0.5 }}
+          >
             <p className="text-lg font-medium mb-2">
               Here's the deal:
             </p>
@@ -169,12 +218,20 @@ export function FeaturesGrid() {
               We answer the phone. We show up on time. Your stuff doesn't get damaged.
               <span className="block mt-1">Revolutionary? No. Reliable? Absolutely.</span>
             </p>
-            <div className="flex items-center justify-center gap-2 text-primary">
+            <m.div 
+              className="flex items-center justify-center gap-2 text-primary"
+              animate={{ scale: [1, 1.05, 1] }}
+              transition={{ 
+                duration: 2,
+                repeat: Infinity,
+                repeatType: "reverse"
+              }}
+            >
               <Zap className="w-5 h-5" />
               <span className="font-semibold">That's literally it. That's our edge.</span>
-            </div>
-          </div>
-        </div>
+            </m.div>
+          </m.div>
+        </AnimatedSection>
       </div>
     </section>
   )

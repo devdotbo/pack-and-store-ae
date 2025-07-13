@@ -7,6 +7,9 @@ import * as z from "zod"
 import { MessageCircle, Send } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
+import { AnimatedSection, StaggerContainer, StaggerItem } from "@/components/scroll/AnimatedSection"
+import { ParallaxBackground } from "@/components/scroll/ParallaxLayer"
+import { m } from "framer-motion"
 import {
   Form,
   FormControl,
@@ -109,35 +112,43 @@ export function QuoteForm() {
   }
 
   return (
-    <section id="quote" className="py-16 md:py-24 bg-muted/30">
-      <div className="container">
-        <div className="max-w-4xl mx-auto">
-          <Card>
-            <CardHeader className="text-center">
-              <CardTitle className="text-3xl md:text-4xl">
-                Get Your <span className="text-primary">Free Quote</span>
-              </CardTitle>
-              <CardDescription className="text-lg">
-                Fill out the form below or contact us via WhatsApp for immediate assistance
-              </CardDescription>
-            </CardHeader>
+    <section id="quote" className="py-16 md:py-24 relative overflow-hidden">
+      {/* Animated Background */}
+      <div className="absolute inset-0 bg-muted/30" />
+      <ParallaxBackground pattern="gradient" speed={0.1} className="opacity-20" />
+      
+      <div className="container relative">
+        <AnimatedSection animation="fadeUpScale" className="max-w-4xl mx-auto">
+          <Card className="backdrop-blur-sm bg-card/95 shadow-xl">
+            <AnimatedSection animation="fadeUp" delay={0.2}>
+              <CardHeader className="text-center">
+                <CardTitle className="text-3xl md:text-4xl">
+                  Get Your <span className="text-primary">Free Quote</span>
+                </CardTitle>
+                <CardDescription className="text-lg">
+                  Fill out the form below or contact us via WhatsApp for immediate assistance
+                </CardDescription>
+              </CardHeader>
+            </AnimatedSection>
             <CardContent>
               <Form {...form}>
                 <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    <FormField
-                      control={form.control}
-                      name="name"
-                      render={({ field }) => (
-                        <FormItem>
-                          <FormLabel>Full Name</FormLabel>
-                          <FormControl>
-                            <Input placeholder="John Doe" {...field} />
-                          </FormControl>
-                          <FormMessage />
-                        </FormItem>
-                      )}
-                    />
+                  <StaggerContainer className="grid grid-cols-1 md:grid-cols-2 gap-6" staggerDelay={0.1} delayChildren={0.3}>
+                    <StaggerItem>
+                      <FormField
+                        control={form.control}
+                        name="name"
+                        render={({ field }) => (
+                          <FormItem>
+                            <FormLabel>Full Name</FormLabel>
+                            <FormControl>
+                              <Input placeholder="John Doe" {...field} />
+                            </FormControl>
+                            <FormMessage />
+                          </FormItem>
+                        )}
+                      />
+                    </StaggerItem>
                     
                     <FormField
                       control={form.control}
@@ -237,14 +248,19 @@ export function QuoteForm() {
                         </FormItem>
                       )}
                     />
-                  </div>
+                  </StaggerContainer>
                   
-                  <div className="flex flex-col sm:flex-row gap-4">
-                    <Button 
-                      type="submit" 
+                  <AnimatedSection animation="fadeUp" delay={0.8} className="flex flex-col sm:flex-row gap-4">
+                    <m.div
+                      whileHover={{ scale: 1.05 }}
+                      whileTap={{ scale: 0.95 }}
                       className="flex-1"
-                      disabled={isSubmitting}
                     >
+                      <Button 
+                        type="submit" 
+                        className="w-full"
+                        disabled={isSubmitting}
+                      >
                       {isSubmitting ? (
                         "Sending..."
                       ) : (
@@ -253,23 +269,30 @@ export function QuoteForm() {
                           Get Free Quote
                         </>
                       )}
-                    </Button>
+                      </Button>
+                    </m.div>
                     
-                    <Button 
-                      type="button"
-                      variant="outline"
-                      className="flex-1 bg-green-500/10 hover:bg-green-500/20 text-green-700 border-green-500/30"
-                      onClick={handleWhatsApp}
+                    <m.div
+                      whileHover={{ scale: 1.05 }}
+                      whileTap={{ scale: 0.95 }}
+                      className="flex-1"
                     >
-                      <MessageCircle className="mr-2 h-4 w-4" />
-                      WhatsApp Us
-                    </Button>
-                  </div>
+                      <Button 
+                        type="button"
+                        variant="outline"
+                        className="w-full bg-green-500/10 hover:bg-green-500/20 text-green-700 border-green-500/30"
+                        onClick={handleWhatsApp}
+                      >
+                        <MessageCircle className="mr-2 h-4 w-4" />
+                        WhatsApp Us
+                      </Button>
+                    </m.div>
+                  </AnimatedSection>
                 </form>
               </Form>
             </CardContent>
           </Card>
-        </div>
+        </AnimatedSection>
       </div>
     </section>
   )

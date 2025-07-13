@@ -6,6 +6,7 @@ import { Footer } from "@/components/layout/Footer";
 import { WhatsAppButton } from "@/components/common/WhatsAppButton";
 import { ThemeProvider } from "@/components/theme-provider";
 import { GoogleAnalytics } from "@/components/google-analytics";
+import { ScrollAnimationProvider } from "@/components/scroll/ScrollAnimationProvider";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -48,10 +49,12 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          <Header />
-          <main className="flex-1">{children}</main>
-          <Footer />
-          <WhatsAppButton />
+          <ScrollAnimationProvider>
+            <Header />
+            <main className="flex-1">{children}</main>
+            <Footer />
+            <WhatsAppButton />
+          </ScrollAnimationProvider>
         </ThemeProvider>
       </body>
     </html>
