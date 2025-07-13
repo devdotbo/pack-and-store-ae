@@ -2,355 +2,339 @@ import { Metadata } from "next"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
-import { FileText, Lock, Search, Flame, Archive, BarChart3, Shield, Clock } from "lucide-react"
+import { Input } from "@/components/ui/input"
+import { Label } from "@/components/ui/label"
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
+import { Plane, Ship, Package, Globe, Shield, Clock, Calculator, MessageCircle } from "lucide-react"
+import Link from "next/link"
 
 export const metadata: Metadata = {
-  title: "Document Storage & Management | Pack And Store",
-  description: "Professional document storage and management services in Dubai. Secure, climate-controlled storage with retrieval services for your important records.",
+  title: "International Shipping Services | Pack And Store Dubai",
+  description: "Professional international shipping and freight forwarding services from Dubai. Get instant quotes for air, sea, and land freight. Door-to-door delivery worldwide.",
 }
 
-export default function DocumentStoragePage() {
+export default function InternationalShippingPage() {
   return (
     <div className="container mx-auto px-4 py-8">
       {/* Hero Section */}
       <section className="mb-16 text-center">
         <Badge className="mb-4" variant="default">
-          ISO 27001 Certified
+          <Globe className="mr-1 h-3 w-3" />
+          Worldwide Delivery
         </Badge>
         <h1 className="mb-4 text-4xl font-bold tracking-tight sm:text-5xl md:text-6xl">
-          Document Storage & Management
+          International Shipping Services
         </h1>
         <p className="mx-auto mb-8 max-w-2xl text-lg text-muted-foreground">
-          Secure, compliant document storage with intelligent retrieval systems. 
-          Protect your business records while maintaining easy access when needed.
+          Ship anything, anywhere. From documents to cargo containers, we provide reliable 
+          international shipping solutions with real-time tracking and competitive rates.
         </p>
         <div className="flex flex-col gap-4 sm:flex-row sm:justify-center">
-          <Button size="lg" className="text-lg">
-            Start Free Consultation
+          <Button size="lg" className="text-lg" asChild>
+            <a href="#shipping-calculator">
+              Get Instant Quote
+              <Calculator className="ml-2 h-5 w-5" />
+            </a>
           </Button>
-          <Button size="lg" variant="outline" className="text-lg">
-            View Security Features
+          <Button size="lg" variant="outline" className="text-lg" asChild>
+            <a href="https://wa.me/+971557198055?text=Hi%2C%20I%20need%20a%20quote%20for%20international%20shipping" target="_blank">
+              <MessageCircle className="mr-2 h-5 w-5" />
+              WhatsApp Quote
+            </a>
           </Button>
         </div>
       </section>
 
-      {/* Key Features */}
+      {/* Shipping Methods */}
       <section className="mb-16">
-        <h2 className="mb-8 text-center text-3xl font-bold">Enterprise-Grade Document Security</h2>
-        <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
+        <h2 className="mb-8 text-center text-3xl font-bold">Shipping Methods</h2>
+        <div className="grid gap-6 md:grid-cols-3">
           <Card>
             <CardHeader>
-              <Lock className="mb-2 h-8 w-8 text-primary" />
-              <CardTitle>Bank-Level Security</CardTitle>
+              <Plane className="mb-2 h-8 w-8 text-primary" />
+              <CardTitle>Air Freight</CardTitle>
+              <CardDescription>Fast delivery for urgent shipments</CardDescription>
             </CardHeader>
             <CardContent>
-              <CardDescription>
-                Biometric access, 24/7 monitoring, and restricted entry protocols
-              </CardDescription>
-            </CardContent>
-          </Card>
-
-          <Card>
-            <CardHeader>
-              <Flame className="mb-2 h-8 w-8 text-primary" />
-              <CardTitle>Fire Protection</CardTitle>
-            </CardHeader>
-            <CardContent>
-              <CardDescription>
-                Advanced fire suppression systems and fireproof storage units
-              </CardDescription>
-            </CardContent>
-          </Card>
-
-          <Card>
-            <CardHeader>
-              <Search className="mb-2 h-8 w-8 text-primary" />
-              <CardTitle>Smart Indexing</CardTitle>
-            </CardHeader>
-            <CardContent>
-              <CardDescription>
-                Digital cataloging for instant document location and retrieval
-              </CardDescription>
-            </CardContent>
-          </Card>
-
-          <Card>
-            <CardHeader>
-              <Shield className="mb-2 h-8 w-8 text-primary" />
-              <CardTitle>Compliance Ready</CardTitle>
-            </CardHeader>
-            <CardContent>
-              <CardDescription>
-                Meet regulatory requirements for document retention and privacy
-              </CardDescription>
-            </CardContent>
-          </Card>
-        </div>
-      </section>
-
-      {/* Service Tiers */}
-      <section className="mb-16">
-        <h2 className="mb-8 text-center text-3xl font-bold">Document Storage Solutions</h2>
-        <div className="grid gap-8 lg:grid-cols-3">
-          <Card>
-            <CardHeader>
-              <CardTitle className="text-2xl">Basic Archive</CardTitle>
-              <CardDescription>For long-term document storage</CardDescription>
-            </CardHeader>
-            <CardContent>
-              <div className="mb-6">
-                <p className="text-3xl font-bold">AED 99</p>
-                <p className="text-muted-foreground">per box/month</p>
-              </div>
-              <ul className="space-y-2">
+              <ul className="space-y-2 text-sm">
                 <li className="flex items-start">
                   <span className="mr-2 text-primary">✓</span>
-                  Climate-controlled storage
+                  Express delivery (1-3 days)
                 </li>
                 <li className="flex items-start">
                   <span className="mr-2 text-primary">✓</span>
-                  Basic inventory tracking
+                  Door-to-door service
                 </li>
                 <li className="flex items-start">
                   <span className="mr-2 text-primary">✓</span>
-                  48-hour retrieval service
+                  Real-time tracking
                 </li>
                 <li className="flex items-start">
                   <span className="mr-2 text-primary">✓</span>
-                  Secure destruction available
+                  Ideal for high-value items
                 </li>
               </ul>
-              <Button className="mt-6 w-full" variant="outline">
-                Get Started
-              </Button>
+              <div className="mt-4">
+                <p className="text-lg font-semibold">From AED 150/kg</p>
+              </div>
             </CardContent>
           </Card>
 
           <Card className="border-primary">
             <CardHeader>
               <Badge className="mb-2 w-fit">Most Popular</Badge>
-              <CardTitle className="text-2xl">Professional</CardTitle>
-              <CardDescription>Complete document management</CardDescription>
+              <Ship className="mb-2 h-8 w-8 text-primary" />
+              <CardTitle>Sea Freight</CardTitle>
+              <CardDescription>Cost-effective for large shipments</CardDescription>
             </CardHeader>
             <CardContent>
-              <div className="mb-6">
-                <p className="text-3xl font-bold">AED 199</p>
-                <p className="text-muted-foreground">per box/month</p>
-              </div>
-              <ul className="space-y-2">
+              <ul className="space-y-2 text-sm">
                 <li className="flex items-start">
                   <span className="mr-2 text-primary">✓</span>
-                  Everything in Basic
+                  Economy shipping (15-45 days)
                 </li>
                 <li className="flex items-start">
                   <span className="mr-2 text-primary">✓</span>
-                  Digital inventory system
+                  Full container (FCL) or shared (LCL)
                 </li>
                 <li className="flex items-start">
                   <span className="mr-2 text-primary">✓</span>
-                  24-hour retrieval service
+                  All cargo types accepted
                 </li>
                 <li className="flex items-start">
                   <span className="mr-2 text-primary">✓</span>
-                  Barcode tracking
-                </li>
-                <li className="flex items-start">
-                  <span className="mr-2 text-primary">✓</span>
-                  Online portal access
+                  Best value for money
                 </li>
               </ul>
-              <Button className="mt-6 w-full">
-                Get Started
-              </Button>
+              <div className="mt-4">
+                <p className="text-lg font-semibold">From AED 50/CBM</p>
+              </div>
             </CardContent>
           </Card>
 
           <Card>
             <CardHeader>
-              <CardTitle className="text-2xl">Enterprise</CardTitle>
-              <CardDescription>Advanced compliance & management</CardDescription>
+              <Package className="mb-2 h-8 w-8 text-primary" />
+              <CardTitle>Land Freight</CardTitle>
+              <CardDescription>Regional deliveries by road</CardDescription>
             </CardHeader>
             <CardContent>
-              <div className="mb-6">
-                <p className="text-3xl font-bold">Custom</p>
-                <p className="text-muted-foreground">Contact for pricing</p>
-              </div>
-              <ul className="space-y-2">
+              <ul className="space-y-2 text-sm">
                 <li className="flex items-start">
                   <span className="mr-2 text-primary">✓</span>
-                  Everything in Professional
+                  GCC countries delivery
                 </li>
                 <li className="flex items-start">
                   <span className="mr-2 text-primary">✓</span>
-                  Same-day retrieval
+                  Flexible scheduling
                 </li>
                 <li className="flex items-start">
                   <span className="mr-2 text-primary">✓</span>
-                  Compliance reporting
+                  Temperature-controlled options
                 </li>
                 <li className="flex items-start">
                   <span className="mr-2 text-primary">✓</span>
-                  Dedicated account manager
-                </li>
-                <li className="flex items-start">
-                  <span className="mr-2 text-primary">✓</span>
-                  Custom retention policies
+                  Customs clearance included
                 </li>
               </ul>
-              <Button className="mt-6 w-full" variant="outline">
-                Contact Sales
+              <div className="mt-4">
+                <p className="text-lg font-semibold">From AED 100/CBM</p>
+              </div>
+            </CardContent>
+          </Card>
+        </div>
+      </section>
+
+      {/* Shipping Calculator */}
+      <section id="shipping-calculator" className="mb-16 rounded-lg bg-muted/50 p-8">
+        <h2 className="mb-8 text-center text-3xl font-bold">Quick Shipping Quote</h2>
+        <Card className="mx-auto max-w-2xl">
+          <CardContent className="p-6">
+            <form className="space-y-6">
+              <div className="grid gap-4 md:grid-cols-2">
+                <div>
+                  <Label htmlFor="from">From Country</Label>
+                  <Select defaultValue="ae">
+                    <SelectTrigger id="from">
+                      <SelectValue />
+                    </SelectTrigger>
+                    <SelectContent>
+                      <SelectItem value="ae">United Arab Emirates</SelectItem>
+                    </SelectContent>
+                  </Select>
+                </div>
+                <div>
+                  <Label htmlFor="to">To Country</Label>
+                  <Select>
+                    <SelectTrigger id="to">
+                      <SelectValue placeholder="Select destination" />
+                    </SelectTrigger>
+                    <SelectContent>
+                      <SelectItem value="us">United States</SelectItem>
+                      <SelectItem value="uk">United Kingdom</SelectItem>
+                      <SelectItem value="ca">Canada</SelectItem>
+                      <SelectItem value="au">Australia</SelectItem>
+                      <SelectItem value="in">India</SelectItem>
+                      <SelectItem value="pk">Pakistan</SelectItem>
+                      <SelectItem value="ph">Philippines</SelectItem>
+                      <SelectItem value="eg">Egypt</SelectItem>
+                      <SelectItem value="sa">Saudi Arabia</SelectItem>
+                      <SelectItem value="other">Other</SelectItem>
+                    </SelectContent>
+                  </Select>
+                </div>
+              </div>
+
+              <div>
+                <Label htmlFor="shipment-type">Shipment Type</Label>
+                <Select>
+                  <SelectTrigger id="shipment-type">
+                    <SelectValue placeholder="Select type" />
+                  </SelectTrigger>
+                  <SelectContent>
+                    <SelectItem value="documents">Documents</SelectItem>
+                    <SelectItem value="parcel">Parcel (&lt; 30kg)</SelectItem>
+                    <SelectItem value="cargo">Cargo (&gt; 30kg)</SelectItem>
+                    <SelectItem value="container">Full Container</SelectItem>
+                    <SelectItem value="vehicle">Vehicle</SelectItem>
+                    <SelectItem value="household">Household Goods</SelectItem>
+                  </SelectContent>
+                </Select>
+              </div>
+
+              <div className="grid gap-4 md:grid-cols-3">
+                <div>
+                  <Label htmlFor="weight">Weight (kg)</Label>
+                  <Input id="weight" type="number" placeholder="0" />
+                </div>
+                <div>
+                  <Label htmlFor="length">Length (cm)</Label>
+                  <Input id="length" type="number" placeholder="0" />
+                </div>
+                <div>
+                  <Label htmlFor="width">Width (cm)</Label>
+                  <Input id="width" type="number" placeholder="0" />
+                </div>
+              </div>
+
+              <div>
+                <Label htmlFor="service">Preferred Service</Label>
+                <Select>
+                  <SelectTrigger id="service">
+                    <SelectValue placeholder="Select service" />
+                  </SelectTrigger>
+                  <SelectContent>
+                    <SelectItem value="express">Express (1-3 days)</SelectItem>
+                    <SelectItem value="standard">Standard (5-10 days)</SelectItem>
+                    <SelectItem value="economy">Economy (15-45 days)</SelectItem>
+                  </SelectContent>
+                </Select>
+              </div>
+
+              <Button type="button" className="w-full" size="lg" asChild>
+                <a href="https://wa.me/+971557198055?text=Hi%2C%20I%20need%20a%20shipping%20quote%20for%3A%0A%0AFrom%3A%20UAE%0ATo%3A%20%5BCountry%5D%0AType%3A%20%5BShipment%20Type%5D%0AWeight%3A%20%5BWeight%5D%20kg%0ADimensions%3A%20%5BL%20x%20W%20x%20H%5D%20cm%0AService%3A%20%5BPreferred%20Service%5D" target="_blank">
+                  <MessageCircle className="mr-2 h-5 w-5" />
+                  Get Quote on WhatsApp
+                </a>
               </Button>
-            </CardContent>
-          </Card>
-        </div>
+            </form>
+          </CardContent>
+        </Card>
       </section>
 
-      {/* Process Section */}
-      <section className="mb-16 rounded-lg bg-muted/50 p-8">
-        <h2 className="mb-8 text-center text-3xl font-bold">How It Works</h2>
-        <div className="grid gap-8 md:grid-cols-4">
-          <div className="text-center">
-            <div className="mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-primary text-2xl font-bold text-primary-foreground mx-auto">
-              1
-            </div>
-            <h3 className="mb-2 font-semibold">Collection</h3>
-            <p className="text-sm text-muted-foreground">
-              We collect your documents from your office
-            </p>
-          </div>
-          <div className="text-center">
-            <div className="mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-primary text-2xl font-bold text-primary-foreground mx-auto">
-              2
-            </div>
-            <h3 className="mb-2 font-semibold">Indexing</h3>
-            <p className="text-sm text-muted-foreground">
-              Documents are cataloged and indexed
-            </p>
-          </div>
-          <div className="text-center">
-            <div className="mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-primary text-2xl font-bold text-primary-foreground mx-auto">
-              3
-            </div>
-            <h3 className="mb-2 font-semibold">Storage</h3>
-            <p className="text-sm text-muted-foreground">
-              Secure storage in climate-controlled facility
-            </p>
-          </div>
-          <div className="text-center">
-            <div className="mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-primary text-2xl font-bold text-primary-foreground mx-auto">
-              4
-            </div>
-            <h3 className="mb-2 font-semibold">Retrieval</h3>
-            <p className="text-sm text-muted-foreground">
-              Quick access whenever you need
-            </p>
-          </div>
-        </div>
-      </section>
-
-      {/* Industries Served */}
+      {/* Services Features */}
       <section className="mb-16">
-        <h2 className="mb-8 text-center text-3xl font-bold">Industries We Serve</h2>
-        <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+        <h2 className="mb-8 text-center text-3xl font-bold">Why Choose Our Shipping Services</h2>
+        <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
           <Card>
             <CardHeader className="pb-3">
-              <CardTitle className="text-lg">Legal Firms</CardTitle>
+              <Shield className="mb-2 h-6 w-6 text-primary" />
+              <CardTitle className="text-lg">Fully Insured</CardTitle>
             </CardHeader>
             <CardContent>
               <p className="text-sm text-muted-foreground">
-                Case files, contracts, and legal documents with chain of custody
+                All shipments covered with comprehensive insurance
               </p>
             </CardContent>
           </Card>
           <Card>
             <CardHeader className="pb-3">
-              <CardTitle className="text-lg">Healthcare</CardTitle>
+              <Clock className="mb-2 h-6 w-6 text-primary" />
+              <CardTitle className="text-lg">On-Time Delivery</CardTitle>
             </CardHeader>
             <CardContent>
               <p className="text-sm text-muted-foreground">
-                Patient records with HIPAA-compliant storage protocols
+                99% on-time delivery rate with tracking updates
               </p>
             </CardContent>
           </Card>
           <Card>
             <CardHeader className="pb-3">
-              <CardTitle className="text-lg">Financial Services</CardTitle>
+              <Globe className="mb-2 h-6 w-6 text-primary" />
+              <CardTitle className="text-lg">Global Network</CardTitle>
             </CardHeader>
             <CardContent>
               <p className="text-sm text-muted-foreground">
-                Transaction records and financial documents with audit trails
+                Partners in 200+ countries for seamless delivery
               </p>
             </CardContent>
           </Card>
           <Card>
             <CardHeader className="pb-3">
-              <CardTitle className="text-lg">Government</CardTitle>
+              <Package className="mb-2 h-6 w-6 text-primary" />
+              <CardTitle className="text-lg">Custom Clearance</CardTitle>
             </CardHeader>
             <CardContent>
               <p className="text-sm text-muted-foreground">
-                Public records with security clearance protocols
-              </p>
-            </CardContent>
-          </Card>
-          <Card>
-            <CardHeader className="pb-3">
-              <CardTitle className="text-lg">Real Estate</CardTitle>
-            </CardHeader>
-            <CardContent>
-              <p className="text-sm text-muted-foreground">
-                Property documents, contracts, and transaction records
-              </p>
-            </CardContent>
-          </Card>
-          <Card>
-            <CardHeader className="pb-3">
-              <CardTitle className="text-lg">Education</CardTitle>
-            </CardHeader>
-            <CardContent>
-              <p className="text-sm text-muted-foreground">
-                Student records and institutional documents
+                Expert handling of all documentation and duties
               </p>
             </CardContent>
           </Card>
         </div>
       </section>
 
-      {/* Statistics */}
-      <section className="mb-16 grid gap-8 md:grid-cols-4 text-center">
-        <div>
-          <BarChart3 className="mb-2 h-8 w-8 text-primary mx-auto" />
-          <p className="text-3xl font-bold">10M+</p>
-          <p className="text-muted-foreground">Documents Stored</p>
-        </div>
-        <div>
-          <Clock className="mb-2 h-8 w-8 text-primary mx-auto" />
-          <p className="text-3xl font-bold">24hr</p>
-          <p className="text-muted-foreground">Retrieval Time</p>
-        </div>
-        <div>
-          <Archive className="mb-2 h-8 w-8 text-primary mx-auto" />
-          <p className="text-3xl font-bold">99.9%</p>
-          <p className="text-muted-foreground">Accuracy Rate</p>
-        </div>
-        <div>
-          <FileText className="mb-2 h-8 w-8 text-primary mx-auto" />
-          <p className="text-3xl font-bold">15+</p>
-          <p className="text-muted-foreground">Years Experience</p>
+      {/* Popular Routes */}
+      <section className="mb-16">
+        <h2 className="mb-8 text-center text-3xl font-bold">Popular Shipping Routes from Dubai</h2>
+        <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+          {[
+            { route: "Dubai to USA", time: "2-5 days", from: "AED 180/kg" },
+            { route: "Dubai to UK", time: "2-4 days", from: "AED 160/kg" },
+            { route: "Dubai to India", time: "1-3 days", from: "AED 120/kg" },
+            { route: "Dubai to Pakistan", time: "1-3 days", from: "AED 110/kg" },
+            { route: "Dubai to Philippines", time: "3-5 days", from: "AED 140/kg" },
+            { route: "Dubai to Australia", time: "3-6 days", from: "AED 190/kg" },
+          ].map((item) => (
+            <Card key={item.route}>
+              <CardContent className="flex items-center justify-between p-4">
+                <div>
+                  <p className="font-semibold">{item.route}</p>
+                  <p className="text-sm text-muted-foreground">{item.time}</p>
+                </div>
+                <p className="text-lg font-bold text-primary">{item.from}</p>
+              </CardContent>
+            </Card>
+          ))}
         </div>
       </section>
 
       {/* CTA Section */}
       <section className="rounded-lg bg-primary p-8 text-center text-primary-foreground">
-        <h2 className="mb-4 text-3xl font-bold">Secure Your Documents Today</h2>
+        <h2 className="mb-4 text-3xl font-bold">Ready to Ship Internationally?</h2>
         <p className="mb-6 text-lg">
-          Get a free consultation and learn how we can streamline your document management
+          Get competitive rates and reliable service for all your shipping needs
         </p>
         <div className="flex flex-col gap-4 sm:flex-row sm:justify-center">
-          <Button size="lg" variant="secondary">
-            Schedule Free Consultation
+          <Button size="lg" variant="secondary" asChild>
+            <a href="https://wa.me/+971557198055?text=Hi%2C%20I%20need%20help%20with%20international%20shipping" target="_blank">
+              <MessageCircle className="mr-2 h-5 w-5" />
+              Get WhatsApp Quote
+            </a>
           </Button>
-          <Button size="lg" variant="outline" className="border-white text-white hover:bg-white hover:text-primary">
-            Download Compliance Guide
+          <Button size="lg" variant="outline" className="border-white text-white hover:bg-white/10" asChild>
+            <Link href="/contact">
+              Contact Our Team
+            </Link>
           </Button>
         </div>
       </section>

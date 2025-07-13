@@ -120,20 +120,20 @@ const galleryImages = [
 
 export default function FacilityPage() {
   return (
-    <main className="min-h-screen bg-gradient-to-b from-blue-50 to-white">
+    <main className="min-h-screen">
       {/* Hero Section */}
-      <section className="relative overflow-hidden bg-gradient-to-br from-blue-600 to-purple-700 py-24">
+      <section className="relative overflow-hidden bg-muted/30 py-24">
         <div className="absolute inset-0 bg-[url('/grid.svg')] opacity-10" />
         <div className="container relative mx-auto px-4">
           <div className="mx-auto max-w-3xl text-center">
-            <Badge className="mb-4 bg-green-500 text-white hover:bg-green-600">
+            <Badge className="mb-4">
               <CheckCircle2 className="mr-1 h-3 w-3" />
               Award-Winning Facility
             </Badge>
-            <h1 className="mb-6 text-4xl font-bold text-white md:text-5xl lg:text-6xl">
+            <h1 className="mb-6 text-4xl font-bold md:text-5xl lg:text-6xl">
               Tour Our State-of-the-Art Storage Facility
             </h1>
-            <p className="mb-8 text-xl text-blue-100">
+            <p className="mb-8 text-xl text-muted-foreground">
               Experience Dubai&apos;s most secure and modern storage facility with cutting-edge
               technology and premium amenities.
             </p>
@@ -151,11 +151,11 @@ export default function FacilityPage() {
       <section className="py-16">
         <div className="container mx-auto px-4">
           <Card className="mx-auto max-w-4xl overflow-hidden border-0 shadow-xl">
-            <div className="relative aspect-video bg-gradient-to-br from-blue-100 to-purple-100">
+            <div className="relative aspect-video bg-muted">
               <div className="absolute inset-0 flex items-center justify-center">
                 <Button
                   size="lg"
-                  className="h-20 w-20 rounded-full bg-white/90 text-blue-600 shadow-lg hover:bg-white"
+                  className="h-20 w-20 rounded-full bg-white/90 text-primary shadow-lg hover:bg-white"
                 >
                   <Play className="h-8 w-8" />
                 </Button>
@@ -181,8 +181,8 @@ export default function FacilityPage() {
             {facilityFeatures.map((feature) => (
               <Card key={feature.title} className="border-0 shadow-lg transition-all hover:shadow-xl">
                 <CardContent className="p-6">
-                  <div className="mb-4 inline-flex rounded-full bg-gradient-to-r from-blue-100 to-purple-100 p-3">
-                    <feature.icon className="h-8 w-8 text-blue-600" />
+                  <div className="mb-4 inline-flex rounded-full bg-primary/10 p-3">
+                    <feature.icon className="h-8 w-8 text-primary" />
                   </div>
                   <h3 className="mb-2 text-xl font-semibold">{feature.title}</h3>
                   <p className="mb-4 text-gray-600">{feature.description}</p>
@@ -210,10 +210,10 @@ export default function FacilityPage() {
           <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
             {galleryImages.map((image, index) => (
               <Card key={image.title} className="group overflow-hidden border-0 shadow-lg">
-                <div className="relative aspect-video bg-gradient-to-br from-blue-100 to-purple-100">
+                <div className="relative aspect-video bg-muted">
                   <div className="absolute inset-0 flex items-center justify-center">
                     <div className="text-center">
-                      <Camera className="mx-auto mb-2 h-12 w-12 text-blue-600/50" />
+                      <Camera className="mx-auto mb-2 h-12 w-12 text-primary/50" />
                       <p className="text-sm text-gray-600">Gallery Image {index + 1}</p>
                     </div>
                   </div>
@@ -237,8 +237,8 @@ export default function FacilityPage() {
           <div className="mx-auto grid max-w-4xl gap-8 md:grid-cols-2 lg:grid-cols-4">
             {amenities.map((amenity) => (
               <div key={amenity.name} className="text-center">
-                <div className="mb-4 inline-flex rounded-full bg-blue-100 p-4">
-                  <amenity.icon className="h-8 w-8 text-blue-600" />
+                <div className="mb-4 inline-flex rounded-full bg-primary/10 p-4">
+                  <amenity.icon className="h-8 w-8 text-primary" />
                 </div>
                 <h3 className="mb-2 text-lg font-semibold">{amenity.name}</h3>
                 <p className="text-sm text-gray-600">{amenity.description}</p>
@@ -249,7 +249,7 @@ export default function FacilityPage() {
       </section>
 
       {/* Location Section */}
-      <section className="bg-gradient-to-br from-blue-50 to-purple-50 py-20">
+      <section className="bg-muted/30 py-20">
         <div className="container mx-auto px-4">
           <Card className="mx-auto max-w-4xl border-0 shadow-xl">
             <CardContent className="p-0">
@@ -260,7 +260,7 @@ export default function FacilityPage() {
                   </h2>
                   <div className="space-y-4">
                     <div className="flex items-start gap-3">
-                      <MapPin className="mt-1 h-5 w-5 shrink-0 text-blue-600" />
+                      <MapPin className="mt-1 h-5 w-5 shrink-0 text-primary" />
                       <div>
                         <p className="font-semibold">Address</p>
                         <p className="text-gray-600">
@@ -271,7 +271,7 @@ export default function FacilityPage() {
                       </div>
                     </div>
                     <div className="flex items-start gap-3">
-                      <Phone className="mt-1 h-5 w-5 shrink-0 text-blue-600" />
+                      <Phone className="mt-1 h-5 w-5 shrink-0 text-primary" />
                       <div>
                         <p className="font-semibold">Contact</p>
                         <p className="text-gray-600">
@@ -282,7 +282,7 @@ export default function FacilityPage() {
                       </div>
                     </div>
                     <div className="flex items-start gap-3">
-                      <Clock className="mt-1 h-5 w-5 shrink-0 text-blue-600" />
+                      <Clock className="mt-1 h-5 w-5 shrink-0 text-primary" />
                       <div>
                         <p className="font-semibold">Access Hours</p>
                         <p className="text-gray-600">
@@ -302,9 +302,9 @@ export default function FacilityPage() {
                     </Button>
                   </div>
                 </div>
-                <div className="relative min-h-[400px] bg-gradient-to-br from-blue-200 to-purple-200">
+                <div className="relative min-h-[400px] bg-muted">
                   <div className="absolute inset-0 flex items-center justify-center">
-                    <MapPin className="h-16 w-16 text-blue-600/50" />
+                    <MapPin className="h-16 w-16 text-primary/50" />
                   </div>
                 </div>
               </div>
@@ -314,12 +314,12 @@ export default function FacilityPage() {
       </section>
 
       {/* CTA Section */}
-      <section className="bg-gradient-to-r from-blue-600 to-purple-700 py-16">
+      <section className="bg-primary py-16 text-primary-foreground">
         <div className="container mx-auto px-4 text-center">
-          <h2 className="mb-4 text-3xl font-bold text-white md:text-4xl">
+          <h2 className="mb-4 text-3xl font-bold md:text-4xl">
             See It to Believe It
           </h2>
-          <p className="mb-8 text-xl text-blue-100">
+          <p className="mb-8 text-xl text-muted-foreground">
             Schedule a personal tour and experience our facility firsthand
           </p>
           <div className="flex flex-col justify-center gap-4 sm:flex-row">
@@ -332,7 +332,7 @@ export default function FacilityPage() {
             <Button
               size="lg"
               variant="outline"
-              className="border-white text-white hover:bg-white hover:text-blue-600"
+              className="border-primary-foreground text-primary-foreground hover:bg-primary-foreground/10"
               asChild
             >
               <Link href="/storage-sizes">View Storage Options</Link>

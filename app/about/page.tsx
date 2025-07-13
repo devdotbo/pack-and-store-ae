@@ -88,16 +88,16 @@ const milestones = [
 
 export default function AboutPage() {
   return (
-    <main className="min-h-screen bg-gradient-to-b from-blue-50 to-white">
+    <main className="min-h-screen">
       {/* Hero Section */}
-      <section className="relative overflow-hidden bg-gradient-to-br from-blue-600 to-purple-700 py-24">
+      <section className="relative overflow-hidden bg-muted/30 py-24">
         <div className="absolute inset-0 bg-[url('/grid.svg')] opacity-10" />
         <div className="container relative mx-auto px-4">
           <div className="mx-auto max-w-3xl text-center">
-            <h1 className="mb-6 text-4xl font-bold text-white md:text-5xl lg:text-6xl">
+            <h1 className="mb-6 text-4xl font-bold md:text-5xl lg:text-6xl">
               Your Trusted Storage Partner in Dubai
             </h1>
-            <p className="mb-8 text-xl text-blue-100">
+            <p className="mb-8 text-xl text-muted-foreground">
               Since 2015, we&apos;ve been helping thousands of customers store their belongings
               with confidence and peace of mind.
             </p>
@@ -111,7 +111,7 @@ export default function AboutPage() {
           <div className="grid grid-cols-2 gap-8 md:grid-cols-4">
             {stats.map((stat) => (
               <div key={stat.label} className="text-center">
-                <div className="mb-2 text-4xl font-bold text-blue-600">
+                <div className="mb-2 text-4xl font-bold text-primary">
                   {stat.number}
                 </div>
                 <div className="text-gray-600">{stat.label}</div>
@@ -139,8 +139,8 @@ export default function AboutPage() {
               {values.map((value) => (
                 <Card key={value.title} className="border-0 shadow-lg">
                   <CardContent className="p-6">
-                    <div className="mb-4 inline-flex rounded-full bg-blue-100 p-3">
-                      <value.icon className="h-6 w-6 text-blue-600" />
+                    <div className="mb-4 inline-flex rounded-full bg-primary/10 p-3">
+                      <value.icon className="h-6 w-6 text-primary" />
                     </div>
                     <h3 className="mb-2 text-xl font-semibold">{value.title}</h3>
                     <p className="text-gray-600">{value.description}</p>
@@ -163,7 +163,7 @@ export default function AboutPage() {
               {milestones.map((milestone, index) => (
                 <div key={milestone.year} className="flex gap-6">
                   <div className="flex flex-col items-center">
-                    <div className="flex h-12 w-12 items-center justify-center rounded-full bg-gradient-to-r from-blue-600 to-purple-600 text-white">
+                    <div className="flex h-12 w-12 items-center justify-center rounded-full bg-primary text-primary-foreground">
                       <CheckCircle2 className="h-6 w-6" />
                     </div>
                     {index < milestones.length - 1 && (
@@ -171,7 +171,7 @@ export default function AboutPage() {
                     )}
                   </div>
                   <div className="flex-1 pb-8">
-                    <div className="mb-1 text-sm font-semibold text-blue-600">
+                    <div className="mb-1 text-sm font-semibold text-primary">
                       {milestone.year}
                     </div>
                     <h3 className="mb-2 text-xl font-semibold">{milestone.title}</h3>
@@ -185,7 +185,7 @@ export default function AboutPage() {
       </section>
 
       {/* Team Section */}
-      <section className="bg-gradient-to-br from-blue-50 to-purple-50 py-20">
+      <section className="bg-muted/30 py-20">
         <div className="container mx-auto px-4">
           <div className="mx-auto max-w-4xl text-center">
             <h2 className="mb-4 text-3xl font-bold text-gray-900 md:text-4xl">
@@ -198,7 +198,7 @@ export default function AboutPage() {
             <div className="grid gap-8 md:grid-cols-3">
               <Card className="border-0 shadow-lg">
                 <CardContent className="p-6">
-                  <Building2 className="mb-4 h-12 w-12 text-blue-600" />
+                  <Building2 className="mb-4 h-12 w-12 text-primary" />
                   <h3 className="mb-2 text-lg font-semibold">Expert Management</h3>
                   <p className="text-sm text-gray-600">
                     Professional facility management with 20+ years of experience
@@ -207,7 +207,7 @@ export default function AboutPage() {
               </Card>
               <Card className="border-0 shadow-lg">
                 <CardContent className="p-6">
-                  <Users className="mb-4 h-12 w-12 text-purple-600" />
+                  <Users className="mb-4 h-12 w-12 text-primary" />
                   <h3 className="mb-2 text-lg font-semibold">Dedicated Support</h3>
                   <p className="text-sm text-gray-600">
                     Friendly customer service team available 7 days a week
@@ -216,7 +216,7 @@ export default function AboutPage() {
               </Card>
               <Card className="border-0 shadow-lg">
                 <CardContent className="p-6">
-                  <TrendingUp className="mb-4 h-12 w-12 text-green-600" />
+                  <TrendingUp className="mb-4 h-12 w-12 text-primary" />
                   <h3 className="mb-2 text-lg font-semibold">Continuous Innovation</h3>
                   <p className="text-sm text-gray-600">
                     Always improving our services based on customer feedback
@@ -229,12 +229,12 @@ export default function AboutPage() {
       </section>
 
       {/* CTA Section */}
-      <section className="bg-gradient-to-r from-blue-600 to-purple-700 py-16">
+      <section className="bg-primary py-16 text-primary-foreground">
         <div className="container mx-auto px-4 text-center">
-          <h2 className="mb-4 text-3xl font-bold text-white md:text-4xl">
+          <h2 className="mb-4 text-3xl font-bold md:text-4xl">
             Experience the Pack and Store Difference
           </h2>
-          <p className="mb-8 text-xl text-blue-100">
+          <p className="mb-8 text-xl">
             Join thousands of satisfied customers who trust us with their valuables
           </p>
           <div className="flex flex-col justify-center gap-4 sm:flex-row">
@@ -247,7 +247,7 @@ export default function AboutPage() {
             <Button
               size="lg"
               variant="outline"
-              className="border-white text-white hover:bg-white hover:text-blue-600"
+              className="border-primary-foreground text-primary-foreground hover:bg-primary-foreground/10"
               asChild
             >
               <Link href="/facility">Tour Our Facility</Link>

@@ -10,13 +10,10 @@ import {
   User,
   ArrowLeft,
   ArrowRight,
-  Facebook,
-  Twitter,
-  Linkedin,
-  Link2,
   Tag,
   Package,
 } from "lucide-react";
+import { ShareButtons } from "./share-buttons";
 
 // This would typically come from a CMS or database
 const getBlogPost = (slug: string) => {
@@ -115,9 +112,10 @@ const getBlogPost = (slug: string) => {
 export async function generateMetadata({
   params,
 }: {
-  params: { slug: string };
+  params: Promise<{ slug: string }>;
 }): Promise<Metadata> {
-  const post = getBlogPost(params.slug);
+  const { slug } = await params;
+  const post = getBlogPost(slug);
   
   if (!post) {
     return {
@@ -138,23 +136,6 @@ export async function generateMetadata({
   };
 }
 
-const shareLinks = [
-  {
-    name: "Facebook",
-    icon: Facebook,
-    getUrl: (url: string) => `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(url)}`,
-  },
-  {
-    name: "Twitter",
-    icon: Twitter,
-    getUrl: (url: string) => `https://twitter.com/intent/tweet?url=${encodeURIComponent(url)}`,
-  },
-  {
-    name: "LinkedIn",
-    icon: Linkedin,
-    getUrl: (url: string) => `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(url)}`,
-  },
-];
 
 // Related posts (mock data)
 const relatedPosts = [
@@ -178,12 +159,13 @@ const relatedPosts = [
   },
 ];
 
-export default function BlogPostPage({ params }: { params: { slug: string } }) {
-  const post = getBlogPost(params.slug);
+export default async function BlogPostPage({ params }: { params: Promise<{ slug: string }> }) {
+  const { slug } = await params;
+  const post = getBlogPost(slug);
   
   if (!post) {
     return (
-      <main className="min-h-screen bg-gradient-to-b from-blue-50 to-white py-24">
+      <main className="min-h-screen py-24">
         <div className="container mx-auto px-4 text-center">
           <h1 className="mb-4 text-4xl font-bold">Post Not Found</h1>
           <p className="mb-8 text-gray-600">The blog post you&apos;re looking for doesn&apos;t exist.</p>
@@ -198,18 +180,18 @@ export default function BlogPostPage({ params }: { params: { slug: string } }) {
     );
   }
   
-  const postUrl = `https://packandstore.ae/blog/${params.slug}`;
+  const postUrl = `https://packandstore.ae/blog/${slug}`;
   
   return (
-    <main className="min-h-screen bg-gradient-to-b from-blue-50 to-white">
+    <main className="min-h-screen">
       {/* Hero Section */}
-      <section className="relative overflow-hidden bg-gradient-to-br from-blue-600 to-purple-700 py-16">
+      <section className="relative overflow-hidden bg-muted/30 py-16">
         <div className="absolute inset-0 bg-[url('/grid.svg')] opacity-10" />
         <div className="container relative mx-auto px-4">
           <div className="mx-auto max-w-4xl">
             <Button
               variant="ghost"
-              className="mb-6 text-white hover:bg-white/20"
+              className="mb-6"
               asChild
             >
               <Link href="/blog">
@@ -217,14 +199,14 @@ export default function BlogPostPage({ params }: { params: { slug: string } }) {
                 Back to Blog
               </Link>
             </Button>
-            <Badge className="mb-4 bg-white/20 text-white hover:bg-white/30">
+            <Badge className="mb-4">
               <post.categoryIcon className="mr-1 h-3 w-3" />
               {post.category}
             </Badge>
-            <h1 className="mb-6 text-3xl font-bold text-white md:text-4xl lg:text-5xl">
+            <h1 className="mb-6 text-3xl font-bold  md:text-4xl lg:text-5xl">
               {post.title}
             </h1>
-            <div className="flex flex-wrap items-center gap-4 text-blue-100">
+            <div className="flex flex-wrap items-center gap-4 text-muted-foreground">
               <span className="flex items-center gap-1">
                 <User className="h-4 w-4" />
                 {post.author}
@@ -255,9 +237,9 @@ export default function BlogPostPage({ params }: { params: { slug: string } }) {
               <Card className="border-0 shadow-xl">
                 <CardContent className="p-8">
                   {/* Featured Image Placeholder */}
-                  <div className="mb-8 aspect-video overflow-hidden rounded-lg bg-gradient-to-br from-blue-100 to-purple-100">
+                  <div className="mb-8 aspect-video overflow-hidden rounded-lg bg-muted">
                     <div className="flex h-full items-center justify-center">
-                      <post.categoryIcon className="h-24 w-24 text-blue-600/20" />
+                      <post.categoryIcon className="h-24 w-24 text-primary/20" />
                     </div>
                   </div>
                   
@@ -281,31 +263,7 @@ export default function BlogPostPage({ params }: { params: { slug: string } }) {
                   <Separator className="my-8" />
                   <div className="flex items-center justify-between">
                     <h3 className="text-lg font-semibold">Share this article</h3>
-                    <div className="flex gap-2">
-                      {shareLinks.map((platform) => (
-                        <Button
-                          key={platform.name}
-                          variant="outline"
-                          size="icon"
-                          asChild
-                        >
-                          <Link
-                            href={platform.getUrl(postUrl, post.title)}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                          >
-                            <platform.icon className="h-4 w-4" />
-                          </Link>
-                        </Button>
-                      ))}
-                      <Button
-                        variant="outline"
-                        size="icon"
-                        onClick={() => navigator.clipboard.writeText(postUrl)}
-                      >
-                        <Link2 className="h-4 w-4" />
-                      </Button>
-                    </div>
+                    <ShareButtons postUrl={postUrl} postTitle={post.title} />
                   </div>
                 </CardContent>
               </Card>
@@ -314,8 +272,8 @@ export default function BlogPostPage({ params }: { params: { slug: string } }) {
               <Card className="mt-8 border-0 shadow-lg">
                 <CardContent className="p-6">
                   <div className="flex items-start gap-4">
-                    <div className="flex h-16 w-16 items-center justify-center rounded-full bg-gradient-to-br from-blue-100 to-purple-100">
-                      <User className="h-8 w-8 text-blue-600" />
+                    <div className="flex h-16 w-16 items-center justify-center rounded-full bg-muted">
+                      <User className="h-8 w-8 text-primary" />
                     </div>
                     <div className="flex-1">
                       <h3 className="text-lg font-semibold">{post.author}</h3>
@@ -333,10 +291,10 @@ export default function BlogPostPage({ params }: { params: { slug: string } }) {
             {/* Sidebar */}
             <div className="space-y-8">
               {/* CTA Card */}
-              <Card className="border-0 bg-gradient-to-br from-blue-600 to-purple-700 text-white shadow-xl">
+              <Card className="border-0 bg-primary  shadow-xl">
                 <CardContent className="p-6">
                   <h3 className="mb-3 text-xl font-semibold">Need Storage?</h3>
-                  <p className="mb-4 text-blue-100">
+                  <p className="mb-4 text-muted-foreground">
                     Get 50% off your first month with Dubai&apos;s most trusted storage solution.
                   </p>
                   <Button variant="secondary" className="w-full" asChild>
@@ -359,7 +317,7 @@ export default function BlogPostPage({ params }: { params: { slug: string } }) {
                         href={`/blog/${relatedPost.slug}`}
                         className="group block"
                       >
-                        <h4 className="mb-1 font-medium transition-colors group-hover:text-blue-600">
+                        <h4 className="mb-1 font-medium transition-colors group-hover:text-primary">
                           {relatedPost.title}
                         </h4>
                         <div className="flex items-center gap-3 text-sm text-gray-600">
@@ -378,7 +336,7 @@ export default function BlogPostPage({ params }: { params: { slug: string } }) {
               </Card>
               
               {/* Newsletter */}
-              <Card className="border-0 bg-gradient-to-br from-blue-50 to-purple-50 shadow-lg">
+              <Card className="border-0 bg-muted/30 shadow-lg">
                 <CardContent className="p-6">
                   <h3 className="mb-3 text-lg font-semibold">Storage Tips Newsletter</h3>
                   <p className="mb-4 text-sm text-gray-600">
@@ -403,12 +361,12 @@ export default function BlogPostPage({ params }: { params: { slug: string } }) {
       </section>
       
       {/* Bottom CTA */}
-      <section className="bg-gradient-to-r from-blue-600 to-purple-700 py-16">
+      <section className="bg-primary py-16 text-primary-foreground">
         <div className="container mx-auto px-4 text-center">
-          <h2 className="mb-4 text-3xl font-bold text-white md:text-4xl">
+          <h2 className="mb-4 text-3xl font-bold  md:text-4xl">
             Start Storing with Confidence
           </h2>
-          <p className="mb-8 text-xl text-blue-100">
+          <p className="mb-8 text-xl text-muted-foreground">
             Join thousands who trust Pack and Store for their storage needs
           </p>
           <div className="flex flex-col justify-center gap-4 sm:flex-row">
@@ -421,7 +379,7 @@ export default function BlogPostPage({ params }: { params: { slug: string } }) {
             <Button
               size="lg"
               variant="outline"
-              className="border-white text-white hover:bg-white hover:text-blue-600"
+              className="border-primary-foreground text-primary-foreground hover:bg-primary-foreground/10"
               asChild
             >
               <Link href="/facility">Tour Our Facility</Link>

@@ -127,16 +127,16 @@ export default function BlogPage() {
   const regularPosts = blogPosts.filter((post) => !post.featured);
 
   return (
-    <main className="min-h-screen bg-gradient-to-b from-blue-50 to-white">
+    <main className="min-h-screen">
       {/* Hero Section */}
-      <section className="relative overflow-hidden bg-gradient-to-br from-blue-600 to-purple-700 py-24">
+      <section className="relative overflow-hidden bg-muted/30 py-24">
         <div className="absolute inset-0 bg-[url('/grid.svg')] opacity-10" />
         <div className="container relative mx-auto px-4">
           <div className="mx-auto max-w-3xl text-center">
-            <h1 className="mb-6 text-4xl font-bold text-white md:text-5xl lg:text-6xl">
+            <h1 className="mb-6 text-4xl font-bold md:text-5xl lg:text-6xl">
               Storage Tips & Insights
             </h1>
-            <p className="mb-8 text-xl text-blue-100">
+            <p className="mb-8 text-xl text-muted-foreground">
               Expert advice on storage, organization, and making the most of your space in
               Dubai
             </p>
@@ -151,9 +151,9 @@ export default function BlogPage() {
             <Link href={`/blog/${featuredPost.slug}`}>
               <Card className="group mx-auto max-w-5xl overflow-hidden border-0 shadow-xl transition-all hover:shadow-2xl">
                 <div className="grid md:grid-cols-2">
-                  <div className="relative aspect-video bg-gradient-to-br from-blue-100 to-purple-100 md:aspect-auto">
+                  <div className="relative aspect-video bg-muted md:aspect-auto">
                     <div className="absolute inset-0 flex items-center justify-center">
-                      <featuredPost.categoryIcon className="h-24 w-24 text-blue-600/20" />
+                      <featuredPost.categoryIcon className="h-24 w-24 text-primary/20" />
                     </div>
                     <Badge className="absolute left-4 top-4 bg-yellow-500 text-black">
                       Featured
@@ -174,7 +174,7 @@ export default function BlogPage() {
                         })}
                       </span>
                     </div>
-                    <h2 className="mb-3 text-2xl font-bold transition-colors group-hover:text-blue-600 md:text-3xl">
+                    <h2 className="mb-3 text-2xl font-bold transition-colors group-hover:text-primary md:text-3xl">
                       {featuredPost.title}
                     </h2>
                     <p className="mb-4 text-gray-600">{featuredPost.excerpt}</p>
@@ -189,7 +189,7 @@ export default function BlogPage() {
                           {featuredPost.readTime}
                         </span>
                       </div>
-                      <ArrowRight className="h-5 w-5 text-blue-600 transition-transform group-hover:translate-x-1" />
+                      <ArrowRight className="h-5 w-5 text-primary transition-transform group-hover:translate-x-1" />
                     </div>
                   </CardContent>
                 </div>
@@ -223,9 +223,9 @@ export default function BlogPage() {
             {regularPosts.map((post) => (
               <Link key={post.id} href={`/blog/${post.slug}`}>
                 <Card className="group h-full overflow-hidden border-0 shadow-lg transition-all hover:shadow-xl">
-                  <div className="relative aspect-video bg-gradient-to-br from-blue-100 to-purple-100">
+                  <div className="relative aspect-video bg-muted">
                     <div className="absolute inset-0 flex items-center justify-center">
-                      <post.categoryIcon className="h-16 w-16 text-blue-600/20" />
+                      <post.categoryIcon className="h-16 w-16 text-primary/20" />
                     </div>
                     <Badge className="absolute left-4 top-4" variant="secondary">
                       <post.categoryIcon className="mr-1 h-3 w-3" />
@@ -233,7 +233,7 @@ export default function BlogPage() {
                     </Badge>
                   </div>
                   <CardContent className="p-6">
-                    <h3 className="mb-2 line-clamp-2 text-xl font-semibold transition-colors group-hover:text-blue-600">
+                    <h3 className="mb-2 line-clamp-2 text-xl font-semibold transition-colors group-hover:text-primary">
                       {post.title}
                     </h3>
                     <p className="mb-4 line-clamp-3 text-gray-600">{post.excerpt}</p>
@@ -287,12 +287,12 @@ export default function BlogPage() {
       </section>
 
       {/* CTA Section */}
-      <section className="bg-gradient-to-r from-blue-600 to-purple-700 py-16">
+      <section className="bg-primary py-16 text-primary-foreground">
         <div className="container mx-auto px-4 text-center">
-          <h2 className="mb-4 text-3xl font-bold text-white md:text-4xl">
+          <h2 className="mb-4 text-3xl font-bold md:text-4xl">
             Ready to Start Storing?
           </h2>
-          <p className="mb-8 text-xl text-blue-100">
+          <p className="mb-8 text-xl text-muted-foreground">
             Put our tips into practice with Dubai&apos;s most trusted storage solution
           </p>
           <div className="flex flex-col justify-center gap-4 sm:flex-row">
@@ -305,7 +305,7 @@ export default function BlogPage() {
             <Button
               size="lg"
               variant="outline"
-              className="border-white text-white hover:bg-white hover:text-blue-600"
+              className="border-primary-foreground text-primary-foreground hover:bg-primary-foreground/10"
               asChild
             >
               <Link href="/contact">Get a Quote</Link>

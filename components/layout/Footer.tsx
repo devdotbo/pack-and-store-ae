@@ -34,7 +34,7 @@ export function Footer() {
               </li>
               <li>
                 <Link href="/document-storage" className="hover:text-primary transition-colors">
-                  Document Storage
+                  International Shipping
                 </Link>
               </li>
               <li>

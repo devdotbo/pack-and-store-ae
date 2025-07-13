@@ -143,9 +143,9 @@ const faqs = [
 
 export default function StorageSizesPage() {
   return (
-    <main className="min-h-screen bg-gradient-to-b from-blue-50 to-white">
+    <main className="min-h-screen">
       {/* Hero Section */}
-      <section className="relative overflow-hidden bg-gradient-to-br from-blue-600 to-purple-700 py-24">
+      <section className="relative overflow-hidden bg-muted/30 py-24">
         <div className="absolute inset-0 bg-[url('/grid.svg')] opacity-10" />
         <div className="container relative mx-auto px-4">
           <div className="mx-auto max-w-3xl text-center">
@@ -153,10 +153,10 @@ export default function StorageSizesPage() {
               <Sparkles className="mr-1 h-3 w-3" />
               First Month 50% OFF
             </Badge>
-            <h1 className="mb-6 text-4xl font-bold text-white md:text-5xl lg:text-6xl">
+            <h1 className="mb-6 text-4xl font-bold md:text-5xl lg:text-6xl">
               Storage Sizes & Transparent Pricing
             </h1>
-            <p className="mb-8 text-xl text-blue-100">
+            <p className="mb-8 text-xl text-muted-foreground">
               Find the perfect storage unit for your needs. No hidden fees, no surprises.
             </p>
           </div>
@@ -172,20 +172,20 @@ export default function StorageSizesPage() {
                 key={unit.id}
                 className={`relative overflow-hidden border-2 transition-all hover:shadow-xl ${
                   unit.highlighted
-                    ? "border-blue-500 shadow-lg"
-                    : "border-gray-200 hover:border-blue-300"
+                    ? "border-primary shadow-lg"
+                    : "border-gray-200 hover:border-primary/50"
                 }`}
               >
                 {unit.badge && (
                   <div className="absolute right-0 top-0">
-                    <Badge className="rounded-bl-lg rounded-br-none rounded-tl-none rounded-tr-lg bg-gradient-to-r from-blue-600 to-purple-600">
+                    <Badge className="rounded-bl-lg rounded-br-none rounded-tl-none rounded-tr-lg" variant="default">
                       {unit.badge}
                     </Badge>
                   </div>
                 )}
                 <CardHeader>
-                  <div className="mb-4 inline-flex rounded-full bg-blue-100 p-3">
-                    <unit.icon className="h-8 w-8 text-blue-600" />
+                  <div className="mb-4 inline-flex rounded-full bg-primary/10 p-3">
+                    <unit.icon className="h-8 w-8 text-primary" />
                   </div>
                   <CardTitle className="text-2xl">{unit.name}</CardTitle>
                   <p className="text-sm text-gray-600">{unit.size}</p>
@@ -231,8 +231,8 @@ export default function StorageSizesPage() {
           <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-4">
             {additionalFeatures.map((feature) => (
               <div key={feature.title} className="text-center">
-                <div className="mb-4 inline-flex rounded-full bg-blue-100 p-4">
-                  <feature.icon className="h-8 w-8 text-blue-600" />
+                <div className="mb-4 inline-flex rounded-full bg-primary/10 p-4">
+                  <feature.icon className="h-8 w-8 text-primary" />
                 </div>
                 <h3 className="mb-2 text-lg font-semibold">{feature.title}</h3>
                 <p className="text-sm text-gray-600">{feature.description}</p>
@@ -245,7 +245,7 @@ export default function StorageSizesPage() {
       {/* Size Calculator */}
       <section className="py-20">
         <div className="container mx-auto px-4">
-          <Card className="mx-auto max-w-4xl border-0 bg-gradient-to-br from-blue-50 to-purple-50 shadow-xl">
+          <Card className="mx-auto max-w-4xl border-0 bg-muted shadow-xl">
             <CardContent className="p-8">
               <h2 className="mb-6 text-center text-3xl font-bold text-gray-900">
                 Not Sure What Size You Need?
@@ -255,15 +255,15 @@ export default function StorageSizesPage() {
               </p>
               <div className="grid gap-6 md:grid-cols-3">
                 <div className="text-center">
-                  <div className="mb-3 text-4xl font-bold text-blue-600">5-10</div>
+                  <div className="mb-3 text-4xl font-bold text-primary">5-10</div>
                   <div className="text-sm text-gray-600">Boxes = Storage Locker</div>
                 </div>
                 <div className="text-center">
-                  <div className="mb-3 text-4xl font-bold text-purple-600">Studio/1BR</div>
+                  <div className="mb-3 text-4xl font-bold text-primary">Studio/1BR</div>
                   <div className="text-sm text-gray-600">Apartment = Small/Medium Unit</div>
                 </div>
                 <div className="text-center">
-                  <div className="mb-3 text-4xl font-bold text-green-600">2-3BR</div>
+                  <div className="mb-3 text-4xl font-bold text-primary">2-3BR</div>
                   <div className="text-sm text-gray-600">Home = Large Unit</div>
                 </div>
               </div>
@@ -302,12 +302,12 @@ export default function StorageSizesPage() {
       </section>
 
       {/* CTA Section */}
-      <section className="bg-gradient-to-r from-blue-600 to-purple-700 py-16">
+      <section className="bg-primary py-16 text-primary-foreground">
         <div className="container mx-auto px-4 text-center">
-          <h2 className="mb-4 text-3xl font-bold text-white md:text-4xl">
+          <h2 className="mb-4 text-3xl font-bold md:text-4xl">
             Ready to Get Started?
           </h2>
-          <p className="mb-8 text-xl text-blue-100">
+          <p className="mb-8 text-xl">
             Reserve your unit today and get 50% off your first month!
           </p>
           <div className="flex flex-col justify-center gap-4 sm:flex-row">
@@ -320,7 +320,7 @@ export default function StorageSizesPage() {
             <Button
               size="lg"
               variant="outline"
-              className="border-white text-white hover:bg-white hover:text-blue-600"
+              className="border-primary-foreground text-primary-foreground hover:bg-primary-foreground/10"
               asChild
             >
               <Link href="/facility">Tour Our Facility</Link>

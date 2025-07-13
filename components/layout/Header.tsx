@@ -14,6 +14,8 @@ import {
   NavigationMenuTrigger,
 } from "@/components/ui/navigation-menu"
 import { cn } from "@/lib/utils"
+import { GoogleTranslate } from "@/components/google-translate"
+import { ThemeToggle } from "@/components/theme-toggle"
 
 const services = [
   {
@@ -27,9 +29,9 @@ const services = [
     description: "Flexible storage options for businesses of all sizes",
   },
   {
-    title: "Document Storage",
+    title: "International Shipping",
     href: "/document-storage",
-    description: "Secure document archiving with access control",
+    description: "Worldwide shipping and freight forwarding services",
   },
   {
     title: "Moving Services",
@@ -107,6 +109,8 @@ export function Header() {
         </NavigationMenu>
 
         <div className="flex items-center gap-4">
+          <GoogleTranslate />
+          <ThemeToggle />
           <Button 
             variant="outline" 
             size="sm"
@@ -197,22 +201,23 @@ export function Header() {
   )
 }
 
-interface ListItemProps extends React.ComponentPropsWithoutRef<"a"> {
+interface ListItemProps {
   className?: string;
   title: string;
   children: React.ReactNode;
+  href: string;
 }
 
-const ListItem = ({ className, title, children, ...props }: ListItemProps) => {
+const ListItem = ({ className, title, children, href }: ListItemProps) => {
   return (
     <li>
       <NavigationMenuLink asChild>
         <Link
+          href={href}
           className={cn(
             "block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground",
             className
           )}
-          {...props}
         >
           <div className="text-sm font-medium leading-none">{title}</div>
           <p className="line-clamp-2 text-sm leading-snug text-muted-foreground">

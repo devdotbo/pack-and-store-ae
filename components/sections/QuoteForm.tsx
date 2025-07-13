@@ -36,8 +36,8 @@ const formSchema = z.object({
   phone: z.string().min(10, {
     message: "Please enter a valid phone number.",
   }),
-  serviceType: z.string({
-    required_error: "Please select a service type.",
+  serviceType: z.string().min(1, {
+    message: "Please select a service type.",
   }),
   storageSize: z.string().optional(),
   message: z.string().min(10, {
@@ -76,7 +76,34 @@ export function QuoteForm() {
 
   const handleWhatsApp = () => {
     const values = form.getValues()
-    const message = `Hi, I'm interested in ${values.serviceType || 'your storage services'}. My name is ${values.name || '[Your Name]'}.`
+    const serviceTypeLabels: Record<string, string> = {
+      personal: 'Personal Storage',
+      business: 'Business Storage',
+      shipping: 'International Shipping',
+      vehicle: 'Vehicle Storage',
+      moving: 'Moving Services'
+    }
+    const serviceLabel = values.serviceType ? serviceTypeLabels[values.serviceType] : 'your services'
+    const storageSizeLabels: Record<string, string> = {
+      small: 'Small (5x5 ft)',
+      medium: 'Medium (10x10 ft)',
+      large: 'Large (10x20 ft)',
+      xlarge: 'Extra Large (10x30 ft)',
+      custom: 'Custom Size'
+    }
+    const sizeLabel = values.storageSize ? storageSizeLabels[values.storageSize] : ''
+    
+    let message = `Hi, I'm interested in ${serviceLabel}.\n\n`
+    message += `Name: ${values.name || '[Not provided]'}\n`
+    message += `Email: ${values.email || '[Not provided]'}\n`
+    message += `Phone: ${values.phone || '[Not provided]'}\n`
+    if (values.storageSize && values.serviceType !== 'shipping') {
+      message += `Preferred Size: ${sizeLabel}\n`
+    }
+    if (values.message) {
+      message += `\nAdditional Information:\n${values.message}`
+    }
+    
     const whatsappUrl = `https://wa.me/+971557198055?text=${encodeURIComponent(message)}`
     window.open(whatsappUrl, '_blank')
   }
@@ -155,7 +182,7 @@ export function QuoteForm() {
                             <SelectContent>
                               <SelectItem value="personal">Personal Storage</SelectItem>
                               <SelectItem value="business">Business Storage</SelectItem>
-                              <SelectItem value="document">Document Storage</SelectItem>
+                              <SelectItem value="shipping">International Shipping</SelectItem>
                               <SelectItem value="vehicle">Vehicle Storage</SelectItem>
                               <SelectItem value="moving">Moving Services</SelectItem>
                             </SelectContent>

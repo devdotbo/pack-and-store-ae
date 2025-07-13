@@ -1,5 +1,5 @@
 import Link from "next/link"
-import { Home, Building, FileText, Car, ArrowRight } from "lucide-react"
+import { Home, Building, Globe, Car, ArrowRight } from "lucide-react"
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 
@@ -21,12 +21,12 @@ const services = [
     features: ["Scalable space", "Bulk storage", "Logistics support"],
   },
   {
-    icon: FileText,
-    title: "Document Storage",
-    description: "Secure archiving for important documents with controlled access and retrieval",
+    icon: Globe,
+    title: "International Shipping",
+    description: "Worldwide shipping and freight forwarding services with real-time tracking",
     href: "/document-storage",
-    imagePlaceholder: "Secure document filing system with locked cabinets",
-    features: ["Climate controlled", "Indexed storage", "Secure access"],
+    imagePlaceholder: "Global shipping network with planes and cargo containers",
+    features: ["Air & sea freight", "Door-to-door delivery", "Custom clearance"],
   },
   {
     icon: Car,

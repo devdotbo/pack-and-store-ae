@@ -18,15 +18,15 @@ export function LocationSection() {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
           {/* Map Section */}
           <div className="aspect-video lg:aspect-auto lg:h-full min-h-[400px] bg-muted rounded-lg overflow-hidden">
-            <iframe
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3614.123456789!2d55.123456!3d25.123456!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2sRukn+Al+Muroj+Self+Storage!5e0!3m2!1sen!2sae!4v1234567890"
+            <iframe 
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3612.5627694908766!2d55.16523561544384!3d24.985882741460873!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3e5f71a3e6a1a1a1%3A0x1234567890abcdef!2sDubai%20Investment%20Park%20-%202%2C%20Dubai!5e0!3m2!1sen!2sae!4v1234567890123"
               width="100%"
               height="100%"
               style={{ border: 0 }}
               allowFullScreen
               loading="lazy"
               referrerPolicy="no-referrer-when-downgrade"
-              title="Pack and Store Location"
+              title="Pack and Store Location - Dubai Investment Park 2"
             />
           </div>
 

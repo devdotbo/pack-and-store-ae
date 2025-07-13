@@ -151,6 +151,24 @@ Commit after:
 - Updating configurations
 - Refactoring code
 
+## Visual Verification with Playwright
+
+**IMPORTANT**: Always use the Playwright MCP server to review and verify UI changes. This ensures:
+- Visual consistency across all pages
+- Proper rendering of components
+- Correct styling and layout
+- Functional navigation and interactions
+
+### Verification Process
+```bash
+# Use Playwright MCP server tools to:
+1. Open the browser
+2. Navigate to modified pages
+3. Take screenshots for visual verification
+4. Test interactive elements
+5. Verify responsive behavior
+```
+
 ## Current Project State
 
 The project is in initial setup phase with:

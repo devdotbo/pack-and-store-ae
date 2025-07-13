@@ -339,7 +339,7 @@ export default function MovingServicesPage() {
           <Button size="lg" variant="secondary">
             Get Instant Quote
           </Button>
-          <Button size="lg" variant="outline" className="border-white text-white hover:bg-white hover:text-primary">
+          <Button size="lg" variant="outline" className="border-white text-white hover:bg-white/10">
             Call: +971 4 123 4567
           </Button>
         </div>
