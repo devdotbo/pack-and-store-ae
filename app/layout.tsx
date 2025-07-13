@@ -1,6 +1,9 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import { Header } from "@/components/layout/Header";
+import { Footer } from "@/components/layout/Footer";
+import { WhatsAppButton } from "@/components/common/WhatsAppButton";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -13,8 +16,17 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "PackAndStore.AE",
-  description: "PackAndStore.AE",
+  title: "Pack & Store - Secure Storage & Professional Packing Services in Dubai",
+  description: "Professional storage and packing services in Dubai. Climate-controlled units, 24/7 access, competitive pricing. Your trusted partner for personal and business storage solutions.",
+  keywords: "storage dubai, self storage dubai, packing services dubai, moving storage dubai, business storage dubai, document storage dubai",
+  openGraph: {
+    title: "Pack & Store - Dubai Storage Solutions",
+    description: "Secure storage units and professional packing services in Dubai Investment Park",
+    url: "https://packandstore.ae",
+    siteName: "Pack & Store",
+    locale: "en_AE",
+    type: "website",
+  },
 };
 
 export default function RootLayout({
@@ -25,9 +37,12 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${geistSans.variable} ${geistMono.variable} antialiased min-h-screen flex flex-col`}
       >
-        {children}
+        <Header />
+        <main className="flex-1">{children}</main>
+        <Footer />
+        <WhatsAppButton />
       </body>
     </html>
   );
