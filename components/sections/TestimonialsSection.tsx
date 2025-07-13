@@ -41,7 +41,7 @@ export function TestimonialsSection() {
             What Our <span className="text-primary">Customers Say</span>
           </h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            Don't just take our word for it - hear from our satisfied customers
+            Don&apos;t just take our word for it - hear from our satisfied customers
           </p>
         </div>
 
@@ -70,7 +70,7 @@ export function TestimonialsSection() {
                 </div>
                 
                 <p className="text-sm text-muted-foreground leading-relaxed">
-                  "{testimonial.content}"
+                  &quot;{testimonial.content}&quot;
                 </p>
               </CardContent>
             </Card>

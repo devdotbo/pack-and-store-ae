@@ -186,7 +186,7 @@ export function QuoteForm() {
                             </SelectContent>
                           </Select>
                           <FormDescription>
-                            Not sure? We'll help you find the right size
+                            Not sure? We&apos;ll help you find the right size
                           </FormDescription>
                           <FormMessage />
                         </FormItem>

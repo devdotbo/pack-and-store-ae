@@ -16,12 +16,7 @@ import {
   Link2,
   Tag,
   Package,
-  Home,
-  Lightbulb,
-  Shield,
-  TrendingUp,
 } from "lucide-react";
-import Image from "next/image";
 
 // This would typically come from a CMS or database
 const getBlogPost = (slug: string) => {
@@ -108,14 +103,14 @@ const getBlogPost = (slug: string) => {
 };
 
 // This would be used for generateStaticParams in production
-const getAllSlugs = () => [
-  "ultimate-guide-storage-unit-sizes",
-  "decluttering-before-moving-dubai",
-  "climate-controlled-storage-dubai",
-  "seasonal-storage-solutions",
-  "business-inventory-storage-tips",
-  "packing-fragile-items-guide",
-];
+// const getAllSlugs = () => [
+//   "ultimate-guide-storage-unit-sizes",
+//   "decluttering-before-moving-dubai",
+//   "climate-controlled-storage-dubai",
+//   "seasonal-storage-solutions",
+//   "business-inventory-storage-tips",
+//   "packing-fragile-items-guide",
+// ];
 
 export async function generateMetadata({
   params,
@@ -152,12 +147,12 @@ const shareLinks = [
   {
     name: "Twitter",
     icon: Twitter,
-    getUrl: (url: string, title: string) => `https://twitter.com/intent/tweet?url=${encodeURIComponent(url)}&text=${encodeURIComponent(title)}`,
+    getUrl: (url: string) => `https://twitter.com/intent/tweet?url=${encodeURIComponent(url)}`,
   },
   {
     name: "LinkedIn",
     icon: Linkedin,
-    getUrl: (url: string, title: string) => `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(url)}`,
+    getUrl: (url: string) => `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(url)}`,
   },
 ];
 
@@ -191,7 +186,7 @@ export default function BlogPostPage({ params }: { params: { slug: string } }) {
       <main className="min-h-screen bg-gradient-to-b from-blue-50 to-white py-24">
         <div className="container mx-auto px-4 text-center">
           <h1 className="mb-4 text-4xl font-bold">Post Not Found</h1>
-          <p className="mb-8 text-gray-600">The blog post you're looking for doesn't exist.</p>
+          <p className="mb-8 text-gray-600">The blog post you&apos;re looking for doesn&apos;t exist.</p>
           <Button asChild>
             <Link href="/blog">
               <ArrowLeft className="mr-2 h-4 w-4" />
@@ -342,7 +337,7 @@ export default function BlogPostPage({ params }: { params: { slug: string } }) {
                 <CardContent className="p-6">
                   <h3 className="mb-3 text-xl font-semibold">Need Storage?</h3>
                   <p className="mb-4 text-blue-100">
-                    Get 50% off your first month with Dubai's most trusted storage solution.
+                    Get 50% off your first month with Dubai&apos;s most trusted storage solution.
                   </p>
                   <Button variant="secondary" className="w-full" asChild>
                     <Link href="/storage-sizes">

@@ -2,7 +2,7 @@ import { Metadata } from "next"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
-import { Truck, Home, Building, Globe, Package, Shield, Clock, Users } from "lucide-react"
+import { Home, Building, Globe, Package, Shield, Clock, Users } from "lucide-react"
 
 export const metadata: Metadata = {
   title: "Professional Moving Services | Pack And Store",
@@ -321,8 +321,8 @@ export default function MovingServicesPage() {
       <section className="mb-16 rounded-lg bg-primary/10 p-8">
         <div className="text-center">
           <p className="mb-4 text-lg italic">
-            "Pack And Store made our office relocation seamless. They worked over the weekend, 
-            and we were operational on Monday morning without any issues. Highly professional!"
+            &quot;Pack And Store made our office relocation seamless. They worked over the weekend, 
+            and we were operational on Monday morning without any issues. Highly professional!&quot;
           </p>
           <p className="font-semibold">Ahmed Hassan</p>
           <p className="text-sm text-muted-foreground">CEO, Tech Solutions Dubai</p>
@@ -331,7 +331,7 @@ export default function MovingServicesPage() {
 
       {/* CTA Section */}
       <section className="rounded-lg bg-primary p-8 text-center text-primary-foreground">
-        <h2 className="mb-4 text-3xl font-bold">Ready to Move? Let's Get Started!</h2>
+        <h2 className="mb-4 text-3xl font-bold">Ready to Move? Let&apos;s Get Started!</h2>
         <p className="mb-6 text-lg">
           Get your free moving quote today and experience stress-free relocation
         </p>

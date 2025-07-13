@@ -71,7 +71,7 @@ export default function PersonalStoragePage() {
               Secure Personal Storage <span className="text-primary">Solutions in Dubai</span>
             </h1>
             <p className="text-lg text-muted-foreground mb-8">
-              Whether you're decluttering, renovating, or between moves, our personal storage units 
+              Whether you&apos;re decluttering, renovating, or between moves, our personal storage units 
               provide the perfect solution for keeping your belongings safe and accessible.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -101,7 +101,7 @@ export default function PersonalStoragePage() {
               </h2>
               <p className="text-lg text-muted-foreground mb-8">
                 Our state-of-the-art facility offers everything you need for a hassle-free 
-                storage experience. From the moment you arrive, you'll appreciate our 
+                storage experience. From the moment you arrive, you&apos;ll appreciate our 
                 commitment to security, cleanliness, and customer service.
               </p>
               <ul className="space-y-3">

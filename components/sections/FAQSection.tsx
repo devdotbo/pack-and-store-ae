@@ -69,7 +69,7 @@ export function FAQSection() {
 
           <div className="mt-8 text-center">
             <p className="text-muted-foreground mb-4">
-              Still have questions? We're here to help!
+              Still have questions? We&apos;re here to help!
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <a 
