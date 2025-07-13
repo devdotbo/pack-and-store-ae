@@ -16,7 +16,10 @@ This is a Next.js 15.3.5 project for PackAndStore.AE, a packing and storage serv
 ### Development
 ```bash
 # Start development server with Turbopack
-pnpm dev
+./dev-server.sh
+
+# Stop development server
+./dev-server.sh --kill
 
 # Build for production
 pnpm build
@@ -27,6 +30,12 @@ pnpm start
 # Run ESLint
 pnpm lint
 ```
+
+**Important**: Always use `./dev-server.sh` instead of `pnpm dev` to start the development server. This script:
+- Automatically kills any existing dev server before starting
+- Logs all output to `dev-server.log` for easy error debugging
+- Runs the server in the background as a service
+- Provides clear status messages during startup
 
 ### Component Management
 ```bash
@@ -84,6 +93,37 @@ No test framework is currently configured. When tests are added, update this sec
 3. **TypeScript**: Maintain strict type safety. All new code should be properly typed.
 
 4. **File Organization**: Follow Next.js App Router conventions. Page components go in `/app`, reusable components in `/components`.
+
+## Error Checking and Build Verification
+
+**IMPORTANT**: Regularly check for build errors to ensure code quality and catch issues early.
+
+### When to Run Build Checks
+1. **After completing any task** - Always run a build check after implementing features or fixes
+2. **When encountering errors** - If the dev server shows errors, check build output for detailed information
+3. **Before committing changes** - Ensure code builds successfully before committing
+
+### Build Verification Process
+```bash
+# Step 1: Stop the dev server first (required)
+./dev-server.sh --kill
+
+# Step 2: Run the production build
+pnpm build
+
+# Step 3: If build succeeds, restart dev server
+./dev-server.sh
+```
+
+### Error Debugging
+- **Dev server logs**: Check `dev-server.log` in the project root for runtime errors
+- **Build errors**: The `pnpm build` command will show TypeScript and build-time errors
+- **First place to check**: Always examine `dev-server.log` when debugging issues
+
+### Log File Location
+- **Development logs**: `./dev-server.log` (in project root)
+- This file contains all console output from the dev server
+- Use `tail -f dev-server.log` to watch logs in real-time
 
 ## Git Commit Guidelines
 
